@@ -1,0 +1,79 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/static/homestyle.css" />
+    <link rel="stylesheet" href="/static/home.css" />
+
+</head>
+<body>
+
+
+    <!-- Header -->
+  <section id="header">
+    <div class="header container">
+      <div class="nav-bar">
+        <div class="brand">
+          <a href="#hero">
+            <h1>The <span>NotePad</span>App</h1>
+          </a>
+        </div>
+        <div class="nav-list">
+          <div class="hamburger">
+            <div class="bar"></div>
+          </div>
+          <ul>
+            <li><a href="/" data-after="Home">Profile</a></li>
+            <li><a href="#contact" data-after="Contact">Leaderboard</a></li>
+            <li><a href="#contact" data-after="Contact">Feedback</a></li>
+            <li><a href="/login" data-after="Logout">Log out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Header -->
+
+        <form method="post" id="form" href="/game">
+
+            <h1>Topic 1</h1>
+            <hr id="line">
+            <button  
+            type="submit" 
+            class="btn  btn-primary">
+            Let's dive</button>
+            
+        </form>
+
+        <form method="post" id="form2">
+
+            <h1>Topic 2</h1>
+            <hr id="line">
+
+        </form>
+
+        <form method="post" id="form3">
+
+            <h1>Topic 3</h1>
+            <hr id="line">
+
+        </form>
+
+        <form method="post" id="form4">
+
+            <h1>Topic 4</h1>
+            <hr id="line">
+
+        </form>
+    
+
+    <script src="{{url_for('static', filename='app.js')}}"></script>
+
+    </body>
+</html>

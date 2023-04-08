@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/article.css" />
+</head>
+<body>
+    <div class="info_box">
+        <div class="title">
+            <span>How to stay safe on the internet</span>
+            <span class="page_number"></span>
+        </div>
+        <div class="text"> <!-- <span>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+            in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            mollit anim id est laborum."</span> --> </div>
+        <div class="buttons">
+            <button class="previous"><</button>
+            <button class="next">></button>
+            <button class="start_quiz"><a href="/game">Start quiz</a></button>
+        </div>
+        <div class="circles">
+            <div class="circle_1"></div>
+            <div class="white_rectangles"></div>
+            <div class="circle_2"></div>
+            <div class="white_rectangles"></div>
+            <div class="circle_3"></div>
+            <div class="white_rectangles"></div>
+            <div class="circle_4"></div>
+            <div class="white_rectangles"></div>
+            <div class="circle_5"></div>
+            <div class="white_rectangles"></div>
+            <div class="circle_6"></div>
+        </div>
+    </div>
+
+
+    <script src="{{url_for('static', filename='information.js')}}"></script>
+    <script src="{{url_for('static', filename='article.js')}}"></script>
+
+</body>
+</html>

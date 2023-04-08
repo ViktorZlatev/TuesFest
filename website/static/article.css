@@ -1,0 +1,126 @@
+body{
+    background-color: #888888;
+}
+
+.info_box{
+    background-color: white ;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 85vmin;
+    height: 72vmin;
+    border-radius: 5px;
+    border: 1px solid blueviolet;
+}
+
+.info_box .title{
+    position: relative;
+    text-align: center;
+    align-items: center;
+    padding: 2vmin;
+    font-size: x-large;
+    font-weight: bold;
+    box-shadow: 3px 3px 3px 3px#888888;
+}
+.info_box .page_number{
+    float: right;
+    padding: 0vmin 2vmin;
+    font-weight: normal;
+}
+
+.info_box .text{
+    padding: 2vmin 5vmin;
+    height: 42vmin;
+    font-size: x-large;
+}
+
+.info_box .buttons{
+    padding: 2vmin 2vmin;
+    float: right;
+    float: bottom;
+}
+
+.info_box button{
+    padding: 0.7vmin 1vmin;
+    font-size: larger;
+    background-color: transparent;
+    border: 1px solid;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.4s ease;
+}
+.info_box button:hover{
+    background-color: lightgray;
+}
+.info_box a{
+    text-decoration: none;
+    color: black;
+}
+
+.info_box .circles{
+    position: fixed;
+    display: flex;
+    padding: 2vmin;
+    left: 50%;
+    top: 89%;
+    transform: translate(-50%);
+}
+.info_box .circles .circle_1{
+    width: 0.1vmin;
+    height: 0.1vmin;
+    background-color: rgb(19, 101, 253);
+    border-radius: 100%;
+    padding: 0.67vmin;
+}
+.info_box .circles .circle_2{
+    width: 0.1vmin;
+    height: 0.1vmin;
+    background-color: lightgray;
+    border-radius: 100%;
+    padding: 0.67vmin;
+}
+.info_box .circles .circle_3{
+    width: 0.1vmin;
+    height: 0.1vmin;
+    background-color: lightgray;
+    border-radius: 100%;
+    padding: 0.67vmin;
+}
+.info_box .circles .circle_4{
+    width: 0.1vmin;
+    height: 0.1vmin;
+    background-color: lightgray;
+    border-radius: 100%;
+    padding: 0.67vmin;
+}
+.info_box .circles .circle_5{
+    width: 0.1vmin;
+    height: 0.1vmin;
+    background-color: lightgray;
+    border-radius: 100%;
+    padding: 0.67vmin;
+}
+.info_box .circles .circle_6{
+    width: 0.1vmin;
+    height: 0.1vmin;
+    background-color: lightgray;
+    border-radius: 100%;
+    padding: 0.67vmin;
+}
+
+.info_box .white_rectangles{
+    background-color: white;
+    width: 0.7vmin;
+    height: 1vmin;
+    border: 1px black;
+}
+
+.info_box .text span{
+    font-size: large;
+}
+
+
+.hide{
+    display: none;
+}

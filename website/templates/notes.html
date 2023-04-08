@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="stylesheet" href="/static/home.css" />
+
+</head>
+<body>
+
+  <!-- Header -->
+  <section id="header">
+    <div class="header container">
+      <div class="nav-bar">
+        <div class="brand">
+          <a href="#hero">
+            <h1>The <span>NotePad</span>App</h1>
+          </a>
+        </div>
+        <div class="nav-list">
+          <div class="hamburger">
+            <div class="bar"></div>
+          </div>
+          <ul>
+            <li><a href="/" data-after="Home">Home</a></li>
+            <li><a href="/login" data-after="Logout">Log out</a></li>
+            <li><a href="#contact" data-after="Contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Header -->
+
+    <div class="container">
+        <form method="post" id="form">
+            <h1>Notes</h1>
+
+        {% for note in user.notes %}
+            <h2>{{note.data}}</h2>
+        {% endfor %}
+
+            <div class="input-control">
+                
+                <input 
+                 id="note" 
+                 name="note" 
+                 type="text"
+                 placeholder="note"
+                 />
+                <div class="error"></div>
+            </div>
+
+            <button  
+             type="submit" 
+             class="btn  btn-primary">
+             Add Note</button>
+
+            <button
+            type="submit" 
+            class="btn  btn-primary">
+            Delete Note</button> 
+
+        </form>
+    </div>
+
+    <script src="{{url_for('static', filename='app.js')}}"></script> 
+
+    </body>
+</html>

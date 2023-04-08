@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/static/style.css" />
+
+</head>
+<body>
+    <div class="container">
+        <form method="post" id="form">
+            <h1>Email has been sent</h1>
+
+            <p>A 6 digit varification code was sent to your email. 
+                   Enter it in the box down below to 
+                   be able to get access to our unique educational system!</p>
+
+            <div class="input-control">
+                <label for="code">Code</label>
+                <input
+                 id="code" 
+                 name="code" 
+                 type="code"
+                 placeholder="code"
+                 />
+                <div class="error"></div>
+            </div>
+
+            <button  
+             type="submit" 
+             class="btn  btn-primary">
+             Continue</button>
+
+        </form>
+    </div>
+
+    <script src="{{url_for('static', filename='2fa.js')}}"></script>
+
+    </body>
+</html>
