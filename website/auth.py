@@ -30,37 +30,12 @@ def login():
         email = request.form.get('email')
         password = request.form.get('password')
 
-        email_sender = 'vzlatev7@gmail.com'
-        email_password = 'hthvwzkriojebrxr'
-        email_receiver = email
-
-        subject = "Varification code"
-
-        global code
-
-        code = random.randint(100000 , 999999)
-
-        body = f"""
-        to prossed enter this varification code in our app : {code} 
-        """ 
-
-        em = EmailMessage()
-        em['From'] = email_sender
-        em['To'] = email_receiver
-        em['Subject'] = subject
-        em.set_content(body)
-
-        context =  ssl.create_default_context()
-
         user = User.query.filter_by(email = email).first()
 
         if user:
             if check_password_hash( user.password, password ):
-                with smtplib.SMTP_SSL('smtp.gmail.com' , 465 , context=context) as smtp :
-                    smtp.login(email_sender , email_password)
-                    smtp.sendmail(email_sender , email_receiver , em.as_string())
                 login_user(user , remember=True)
-                return redirect('/2fa')
+                return redirect('/home')
 
     return render_template("login.html")
 
@@ -86,6 +61,33 @@ def sign_up():
         email = request.form.get('email')
         password = request.form.get('password')
 
+
+        #email sending
+
+        email_sender = 'vzlatev7@gmail.com'
+        email_password = 'hthvwzkriojebrxr'
+        email_receiver = email
+
+        subject = "Varification code"
+
+        global code
+
+        code = random.randint(100000 , 999999)
+
+        body = f"""
+        to prossed enter this varification code in our app : {code} 
+        """ 
+
+        em = EmailMessage()
+        em['From'] = email_sender
+        em['To'] = email_receiver
+        em['Subject'] = subject
+        em.set_content(body)
+
+        context =  ssl.create_default_context()
+        #end of email sending
+
+
         user = User.query.filter_by(email = email).first()
 
         if user:
@@ -95,8 +97,11 @@ def sign_up():
             new_user = User(email = email , first_name = username , password = generate_password_hash ( password , method = 'sha256' ) )
             db.session.add(new_user)
             db.session.commit()
+            with smtplib.SMTP_SSL('smtp.gmail.com' , 465 , context=context) as smtp :
+                smtp.login(email_sender , email_password)
+                smtp.sendmail(email_sender , email_receiver , em.as_string())
 
-            return redirect('/leaderboard')
+            return redirect('/2fa')
  
     return render_template("signup.html")
 
