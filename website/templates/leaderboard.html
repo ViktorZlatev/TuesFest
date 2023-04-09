@@ -1,31 +1,71 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderboard</title>
-    <link rel="stylesheet" href="/static/leaderboard.css" />
+    <title>Notes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="stylesheet" href="/static/home.css" />
+    <link rel="stylesheet" href="/static/profile.css" />
+
 </head>
 <body>
-    
-   <!-- <table>
-       <tr>
-        {% for header in headings %}
-        <th>{{header}}</th>
-        {% endfor %}
-       </tr>
 
-       {% for row in data %}
-         <tr>
-          {% for cell in row %}
-              <td>{{cell}}</td>
-          {% endfor %}
-          </tr>  
-       {% endfor %} 
-    </table> -->
+  <!-- Header -->
+  <section id="header">
+    <div class="header container">
+      <div class="nav-bar">
+        <div class="brand">
+          <a href="#hero">
+            <h1>The <span>Security</span>App</h1>
+          </a>
+        </div>
+        <div class="nav-list">
+          <div class="hamburger">
+            <div class="bar"></div>
+          </div>
+          <ul>
+            <li><a href="/home" data-after="Home">Home</a></li>
+            <li><a href="/profile" data-after="Profile">Profile</a></li>
+            <li><a href="#contact" data-after="Feedback">Feedback</a></li>
+            <li><a href="/login" data-after="Logout">Log out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Header -->
 
-    <h2>{{sum}}</h2>
-    
-</body>
+    <div class="container">
+        <form method="post" id="form">
+            <h1>Leaderboard</h1>
+
+            <table>
+
+            <tr>
+                {% for header in headings %}
+                <th>{{header}}</th>
+                {% endfor %}
+            </tr>
+
+            <tr>
+                <th><p>{{user.first_name}}   {{sum}}</p></th>
+            </tr>
+
+            </table>
+  
+
+            <div class="error"></div>
+            </div>
+
+        </form>
+    </div>
+
+    <script src="{{url_for('static', filename='app.js')}}"></script> 
+
+    </body>
 </html>

@@ -3,19 +3,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Validation</title>
+    <title>Notes</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="/static/homestyle.css" />
+    <link rel="stylesheet" href="/static/style.css" />
     <link rel="stylesheet" href="/static/home.css" />
+    <link rel="stylesheet" href="/static/profile.css" />
 
 </head>
 <body>
 
-
-    <!-- Header -->
+  <!-- Header -->
   <section id="header">
     <div class="header container">
       <div class="nav-bar">
@@ -29,7 +29,7 @@
             <div class="bar"></div>
           </div>
           <ul>
-            <li><a href="/profile" data-after="Profile">Profile</a></li>
+            <li><a href="/home" data-after="Home">Home</a></li>
             <li><a href="/leaderboard" data-after="Leaderboard">Leaderboard</a></li>
             <li><a href="#contact" data-after="Feedback">Feedback</a></li>
             <li><a href="/login" data-after="Logout">Log out</a></li>
@@ -40,40 +40,31 @@
   </section>
   <!-- End Header -->
 
-        <form method="post" id="form" href="/game">
+    <div class="container">
+        <form method="post" id="form">
+            <h1>Your profile</h1>
 
-            <h1>Topic 1</h1>
-            <hr id="line">
-            <button  
-            type="submit" 
-            class="btn  btn-primary">
-            Let's dive</button>
-            
-        </form>
-
-        <form method="post" id="form2">
-
-            <h1>Topic 2</h1>
             <hr id="line">
 
+            <span class="dot"></span>
+
+            <div class="input-control">
+                
+                <p id = "username">username:  {{user.first_name}}</p>
+
+                <p> email: {{user.email}}</p>
+
+                <p> your score: {{sum * 10}} xp <p>
+
+                <p>location: <p1> Sofia , Bulgaria </p1> </p>     
+
+                <div class="error"></div>
+            </div>
+
         </form>
+    </div>
 
-        <form method="post" id="form3">
-
-            <h1>Topic 3</h1>
-            <hr id="line">
-
-        </form>
-
-        <form method="post" id="form4">
-
-            <h1>Topic 4</h1>
-            <hr id="line">
-
-        </form>
-    
-
-    <script src="{{url_for('static', filename='app.js')}}"></script>
+    <script src="{{url_for('static', filename='app.js')}}"></script> 
 
     </body>
 </html>

@@ -144,11 +144,30 @@ def delete_note():
     
     return jsonify({})
 
+#end of quizz app
+
+
+# profile page
+
+@auth.route('/profile' , methods = ["POST" , "GET"] )
+
+def profile():
+    sum = 0
+    if request.method == 'GET':
+
+        user = current_user
+        for note in user.notes:
+            sum = sum + int(note.data)
+
+    return render_template('profile.html' , user = user , sum = sum)
+
+
+
 
 #leaderboard
 
 
-headings = ['Name' , 'Role' , 'Salary']
+headings = ['Name' , 'Points']
 
 @auth.route('/leaderboard' , methods = ["POST" , "GET"] )
 
@@ -160,4 +179,4 @@ def leaderboard():
         for note in user.notes:
             sum = sum + int(note.data)
 
-    return render_template('leaderboard.html' , user = user , sum = sum)
+    return render_template('leaderboard.html' , user = user , sum = sum , headings=headings)
