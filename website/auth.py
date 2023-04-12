@@ -76,14 +76,14 @@ def sign_up():
 
         print(email_password)
 
-        subject = "Varification code"
+        subject = "Verification code"
 
         global code
 
         code = random.randint(100000 , 999999)
 
         body = f"""
-        to prossed enter this varification code in our app : {code} 
+        to prossed enter this verification code in our app : {code} 
         """ 
 
         em = EmailMessage()
