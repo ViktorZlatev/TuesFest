@@ -53,7 +53,9 @@
             </tr>
 
             <tr>
-                <th><p>{{user.first_name}}   {{sum}}</p></th>
+                {% for data in converted_dict %}
+                <th>{{data}} {{ converted_dict[data] }}</th>
+                {% endfor %}
             </tr>
 
             </table>

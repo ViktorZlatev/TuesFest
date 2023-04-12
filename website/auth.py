@@ -9,10 +9,13 @@ import smtplib
 import random
 import json
 
-global emails , names , allnotes
-emails = [] 
-names = []
-allnotes = []
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+global scores
+scores = {}
 
 
 auth = Blueprint('auth' , __name__)
@@ -48,7 +51,8 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('auth.login'))
+    return redirect('/')
+
 
 
 #sign_up
@@ -64,18 +68,22 @@ def sign_up():
 
         #email sending
 
+        PASSWORD = os.getenv("EMAIL_PASSWORD")
+
         email_sender = 'vzlatev7@gmail.com'
-        email_password = 'hthvwzkriojebrxr'
+        email_password = PASSWORD
         email_receiver = email
 
-        subject = "Varification code"
+        print(email_password)
+
+        subject = "Verification code"
 
         global code
 
         code = random.randint(100000 , 999999)
 
         body = f"""
-        to prossed enter this varification code in our app : {code} 
+        to prossed enter this verification code in our app : {code} 
         """ 
 
         em = EmailMessage()
@@ -97,6 +105,7 @@ def sign_up():
             new_user = User(email = email , first_name = username , password = generate_password_hash ( password , method = 'sha256' ) )
             db.session.add(new_user)
             db.session.commit()
+            login_user(new_user , remember=True)
             with smtplib.SMTP_SSL('smtp.gmail.com' , 465 , context=context) as smtp :
                 smtp.login(email_sender , email_password)
                 smtp.sendmail(email_sender , email_receiver , em.as_string())
@@ -179,4 +188,13 @@ def leaderboard():
         for note in user.notes:
             sum = sum + int(note.data)
 
-    return render_template('leaderboard.html' , user = user , sum = sum , headings=headings)
+        print(user.first_name)
+        scores[user.first_name] = str(sum)
+
+        print(scores)
+
+        sorted_scores = sorted( scores.items(), key=lambda x:x[1], reverse=True )
+
+        converted_dict = dict(sorted_scores)
+
+    return render_template('leaderboard.html' , user = user , headings=headings , converted_dict = converted_dict )
