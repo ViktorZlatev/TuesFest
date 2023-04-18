@@ -170,10 +170,14 @@ def profile():
         user = current_user
 
         for note in user.notes:
-            if int(note.data) > max:
-                max = int(note.data)
+            if note in user.notes:
+                if int(note.data) > max:
+                    max = int(note.data)
+                    ok = 0 
 
-        sum = max
+            if ok == 0:
+                sum = max
+            else : sum = 0 
 
     return render_template('profile.html' , user = user , sum = sum)
 
@@ -197,10 +201,14 @@ def leaderboard():
         user = current_user
 
         for note in user.notes:
-            if int(note.data) > max:
-                max = int(note.data)
+            if note in user.notes:
+                if int(note.data) > max:
+                    max = int(note.data)
+                    ok = 0 
 
-        sum = max * 10
+            if ok == 0:
+                sum = max * 10
+            else : sum = 0       
 
         scores[user.first_name] = str(sum)
 
