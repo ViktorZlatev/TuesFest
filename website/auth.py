@@ -48,7 +48,6 @@ def login():
 
 
 @auth.route('/logout' )
-@login_required
 def logout():
     logout_user()
     return redirect('/')
@@ -130,6 +129,8 @@ def email():
 
 
 
+
+
 #quizapp
 
 
@@ -140,7 +141,7 @@ def game():
 
 
 
-#savescore
+  #savescore
 
 @auth.route('/savescore', methods=['POST'])
 def delete_note():  
@@ -156,17 +157,23 @@ def delete_note():
 #end of quizz app
 
 
+
 # profile page
 
 @auth.route('/profile' , methods = ["POST" , "GET"] )
 
 def profile():
     sum = 0
+    max = -1000
     if request.method == 'GET':
 
         user = current_user
+
         for note in user.notes:
-            sum = sum + int(note.data)
+            if int(note.data) > max:
+                max = int(note.data)
+
+        sum = max
 
     return render_template('profile.html' , user = user , sum = sum)
 
@@ -181,17 +188,21 @@ headings = ['Name' , 'Points']
 @auth.route('/leaderboard' , methods = ["POST" , "GET"] )
 
 def leaderboard():
+
     sum = 0
+    max = -1000
+
     if request.method == 'GET':
 
         user = current_user
+
         for note in user.notes:
-            sum = sum + int(note.data)
+            if int(note.data) > max:
+                max = int(note.data)
 
-        print(user.first_name)
+        sum = max * 10
+
         scores[user.first_name] = str(sum)
-
-        print(scores)
 
         sorted_scores = sorted( scores.items(), key=lambda x:x[1], reverse=True )
 
