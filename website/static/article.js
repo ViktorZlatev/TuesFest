@@ -2,8 +2,6 @@ const prev_button = document.querySelector(".previous")
 const next_button = document.querySelector(".next")
 const start_quiz_button = document.querySelector(".start_quiz")
 
-start_quiz_button.classList.add("hide");
-
 var page_index = 0;
 if(page_index == 0){
     prev_button.classList.add("hide");
@@ -16,7 +14,6 @@ prev_button.onclick = ()=>{
     }
     if(page_index < 5){
         next_button.classList.remove("hide");
-        start_quiz_button.classList.add("hide");
     }
     showText();
 }

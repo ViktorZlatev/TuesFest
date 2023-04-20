@@ -326,6 +326,13 @@ footer button.show{
 .buttons button.restart:hover{
     background: #022e5e;
 }
+.buttons button.quit a{
+    color: #007bff;
+    text-decoration: none;
+}
+.buttons button.quit a:hover{
+    color: #fff;
+}
 .buttons button.quit{
     color: #007bff;
     background: #fff;
