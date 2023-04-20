@@ -1,5 +1,4 @@
 //selecting all required elements
-const start_btn = document.querySelector(".start_btn button");
 const info_box = document.querySelector(".info_box");
 const exit_btn = info_box.querySelector(".buttons .quit");
 const continue_btn = info_box.querySelector(".buttons .restart");
@@ -13,14 +12,11 @@ const timeCount = document.querySelector(".timer .timer_sec");
 
 var points = 0;
 
-// if startQuiz button clicked
-start_btn.onclick = ()=>{
-    info_box.classList.add("activeInfo"); //show info box
-}
+info_box.classList.add("activeInfo"); 
 // if exitQuiz button clicked
-exit_btn.onclick = ()=>{
+/*exit_btn.onclick = ()=>{
     info_box.classList.remove("activeInfo"); //hide info box
-}
+}*/
 // if continueQuiz button clicked
 continue_btn.onclick = ()=>{
     info_box.classList.remove("activeInfo"); //hide info box
@@ -141,16 +137,16 @@ function showResult(){
     quiz_box.classList.remove("activeQuiz"); //hide quiz box
     result_box.classList.add("activeResult"); //show result box
     const scoreText = result_box.querySelector(".score_text");
-    if (userScore > 3){ // if user scored more than 3
+    if (userScore > 5){ // if user scored more than 5
         //creating a new span tag and passing the user score number and total question number
         let scoreTag = '<span>and congrats! , You got <p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
         scoreText.innerHTML = scoreTag;  //adding new span tag inside score_Text
     }
-    else if(userScore > 1){ // if user scored more than 1
+    else if(userScore > 2){ // if user scored more than 2
         let scoreTag = '<span>and nice , You got <p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
         scoreText.innerHTML = scoreTag;
     }
-    else{ // if user scored less than 1
+    else{ // if user scored less than 2
         let scoreTag = '<span>and sorry , You got only <p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
         scoreText.innerHTML = scoreTag;
     }
