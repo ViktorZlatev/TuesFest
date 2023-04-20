@@ -33,7 +33,7 @@
             <li><a href="/home" data-after="Home">Home</a></li>
             <li><a href="/profile" data-after="Profile">Profile</a></li>
             <li><a href="#contact" data-after="Feedback">Feedback</a></li>
-            <li><a href="/login" data-after="Logout">Log out</a></li>
+            <li><a href="/" data-after="Logout">Log out</a></li>
           </ul>
         </div>
       </div>
@@ -56,10 +56,20 @@
                 {% for data in converted_dict %}
                   <tr>
 
-                    <td>{{data}}</td>
+                    {% if data != user.first_name %}
+
+                      <td>{{data}}</td>  
+
+                    {% else %}
+
+                      <td style="font-weight: bold;">{{data}}</td>
+
+                    {% endif %}  
+
                     <td>{{ converted_dict[data] }}</td>
-                    
+
                   </tr>
+                  
                 {% endfor %}
 
             </table>

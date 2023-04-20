@@ -12,10 +12,7 @@ import json
 from dotenv import load_dotenv
 import os
 
-load_dotenv()
-
-global scores
-scores = {}
+scores = {} ; sum = 0 ; max = -1000 ; code = random.randint(100000 , 999999)
 
 
 auth = Blueprint('auth' , __name__)
@@ -28,6 +25,8 @@ auth = Blueprint('auth' , __name__)
 @auth.route('/login' ,  methods = ["POST" , "GET"])
 def login():
 
+    global sum , max , scores
+
     if request.method == 'POST':
         
         email = request.form.get('email')
@@ -38,6 +37,7 @@ def login():
         if user:
             if check_password_hash( user.password, password ):
                 login_user(user , remember=True)
+
                 return redirect('/home')
 
     return render_template("login.html")
@@ -67,7 +67,9 @@ def sign_up():
 
         #email sending
 
-        PASSWORD = os.getenv("EMAIL_PASSWORD")
+        load_dotenv()
+
+        PASSWORD = os.getenv("EMAIL_PASS")
 
         email_sender = 'vzlatev7@gmail.com'
         email_password = PASSWORD
@@ -78,8 +80,6 @@ def sign_up():
         subject = "Verification code"
 
         global code
-
-        code = random.randint(100000 , 999999)
 
         body = f"""
         to prossed enter this verification code in our app : {code} 
@@ -120,8 +120,10 @@ def sign_up():
 
 @auth.route('/2fa' , methods = ["POST" , "GET"])
 @login_required
+
 def email():
     if request.method == 'POST':
+        global code
         mycode = request.form.get('code')
         if mycode == str(code):
             return redirect('/home')
@@ -163,8 +165,9 @@ def delete_note():
 @auth.route('/profile' , methods = ["POST" , "GET"] )
 
 def profile():
-    sum = 0
-    max = -1000
+
+    global scores , sum , max
+
     if request.method == 'GET':
 
         user = current_user
@@ -175,9 +178,9 @@ def profile():
                     max = int(note.data)
                     ok = 0 
 
-            if ok == 0:
-                sum = max
-            else : sum = 0 
+                    if ok == 0:
+                        sum = max * 10
+                    else : sum = 0 
 
     return render_template('profile.html' , user = user , sum = sum)
 
@@ -193,22 +196,11 @@ headings = ['Name' , 'Points']
 
 def leaderboard():
 
-    sum = 0
-    max = -1000
+    global scores , sum , max
 
     if request.method == 'GET':
 
         user = current_user
-
-        for note in user.notes:
-            if note in user.notes:
-                if int(note.data) > max:
-                    max = int(note.data)
-                    ok = 0 
-
-            if ok == 0:
-                sum = max * 10
-            else : sum = 0       
 
         scores[user.first_name] = str(sum)
 
@@ -216,4 +208,4 @@ def leaderboard():
 
         converted_dict = dict(sorted_scores)
 
-    return render_template('leaderboard.html' , user = user , headings=headings , converted_dict = converted_dict )
+    return render_template('leaderboard.html' , user = user , headings=headings , converted_dict = converted_dict)
