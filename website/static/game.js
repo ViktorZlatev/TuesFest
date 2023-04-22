@@ -164,7 +164,7 @@ function deleteNote(points) {
       method: "POST",
       body: JSON.stringify({ 'noteId': points }),
     }).then((_res) => {
-      window.location.href = "/";
+      window.location.href = "/home";
     });
   }
 

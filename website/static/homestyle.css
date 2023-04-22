@@ -40,6 +40,8 @@ body {
 
 #form2 .btn_btn-primary{
     background-color:#e0e0f9;
+    margin-bottom: 20px;
+   
 }
 #form2 .btn_btn-primary:hover{
     background-color: #C3C3E9;
@@ -79,11 +81,11 @@ body {
 
 #form2 {
     position:absolute;
-    width: 405px;
+    width: 400px;
     margin: 20vh auto 0 auto;
     top:0%;
     left: 55%;
-    padding: 40px;
+    padding: 15px;
     background-color:rgb(195, 195, 233);
     border-radius: 4px;
     font-size: 12px;
@@ -91,14 +93,15 @@ body {
 
 #form2 h1 {
     text-align: center;
-    padding-bottom: 150px;
+    padding-top: 10px;
+    margin-bottom: 124px;
 }
 
 #form2 hr {
     position: absolute;
     width: 77%;
     height: 2px;
-    top:36%;
+    top:31%;
     left:12%;
     align-items: center;
     border: 0 none;

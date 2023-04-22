@@ -166,7 +166,8 @@ def delete_note():
 
 def profile():
 
-    global scores , sum , max
+    global scores
+    sum = 0  ; max = -1000
 
     if request.method == 'GET':
 
@@ -196,11 +197,22 @@ headings = ['Name' , 'Points']
 
 def leaderboard():
 
-    global scores , sum , max
+    global scores
+    sum = 0 ; max = -1000
 
     if request.method == 'GET':
 
         user = current_user
+
+        for note in user.notes:
+            if note in user.notes:
+                if int(note.data) > max:
+                    max = int(note.data)
+                    ok = 0 
+
+                    if ok == 0:
+                        sum = max * 10
+                    else : sum = 0 
 
         scores[user.first_name] = str(sum)
 
