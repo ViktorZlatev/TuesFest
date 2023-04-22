@@ -75,8 +75,6 @@ def sign_up():
         email_password = PASSWORD
         email_receiver = email
 
-        print(email_password)
-
         subject = "Verification code"
 
         global code
