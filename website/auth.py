@@ -218,4 +218,8 @@ def leaderboard():
 
         converted_dict = dict(sorted_scores)
 
+        for i in range(len(converted_dict)):
+            if i > 5:
+                converted_dict.popitem()
+
     return render_template('leaderboard.html' , user = user , headings=headings , converted_dict = converted_dict)
